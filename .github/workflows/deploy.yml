@@ -11,26 +11,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - target: x86_64-unknown-linux-gnu
-            os: ubuntu-latest
-            name: ttyper-x86_64-unknown-linux-gnu.tar.gz
-
-          - target: x86_64-unknown-linux-musl
-            os: ubuntu-latest
-            name: ttyper-x86_64-unknown-linux-musl.tar.gz
-
-          - target: i686-unknown-linux-musl
-            os: ubuntu-latest
-            name: ttyper-i686-unknown-linux-musl.tar.gz
-
-          - target: aarch64-unknown-linux-musl
-            os: ubuntu-latest
-            name: ttyper-aarch64-unknown-linux-musl.tar.gz
-
-          - target: arm-unknown-linux-musleabihf
-            os: ubuntu-latest
-            name: ttyper-arm-unknown-linux-musleabihf.tar.gz
-
           - target: x86_64-apple-darwin
             os: macos-latest
             name: ttyper-x86_64-apple-darwin.tar.gz
@@ -38,18 +18,6 @@ jobs:
           - target: aarch64-apple-darwin
             os: macos-latest
             name: ttyper-aarch64-apple-darwin.tar.gz
-
-          - target: x86_64-pc-windows-msvc
-            os: windows-latest
-            name: ttyper-x86_64-pc-windows-msvc.zip
-
-          - target: i686-pc-windows-msvc
-            os: windows-latest
-            name: ttyper-i686-pc-windows-msvc.zip
-
-          - target: aarch64-pc-windows-msvc
-            os: windows-latest
-            name: ttyper-aarch64-pc-windows-msvc.zip
 
     runs-on: ${{ matrix.os }}
     continue-on-error: true
@@ -147,22 +115,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Setup | Checkout
       - uses: actions/checkout@v4
+
+      - name: Setup | Node
       - uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install deps and bump version
+      - name: Setup | Dependencies
+        run: npm ci
         working-directory: ./npm
-        run: |
-          # Install dependencies
-          npm ci
-          # Update the package.json file with the release version
-          npm version ${{ github.ref_name }}
+
+      - name: Setup | Vesion
+        run: npm version ${{ github.ref_name }}
+        working-directory: ./npm
 
       - name: NPM Publish
-        working-directory: ./npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        working-directory: ./npm
