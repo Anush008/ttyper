@@ -2,9 +2,14 @@
   "name": "ttyper",
   "version": "0.0.0-alpha2",
   "description": "ttyper is a terminal-based typing test built with Rust and tui-rs.",
-  "repository": "https://github.com/Anush008/ttyper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anush008/ttyper.git"
+  },
   "license": "MIT",
-  "bin": "./runner.js",
+  "bin": {
+    "ttyper": "runner.js"
+  },
   "type": "module",
   "scripts": {
     "install": "node install.js"
