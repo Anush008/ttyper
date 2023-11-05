@@ -31,7 +31,7 @@ scoop install ttyper
 
 ### npm
 ```bash
-npm i -g bash
+npm i -g ttyper
 ```
 
 ## usage
