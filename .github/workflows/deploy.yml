@@ -108,7 +108,9 @@ jobs:
         working-directory: ./npm
 
       - name: NPM Publish
-        run: npm publish
+        run: |
+          cp ../README.md .
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         working-directory: ./npm
