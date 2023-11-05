@@ -1,6 +1,7 @@
 # ttyper
 
 [![Crates.io](https://img.shields.io/crates/v/ttyper)](https://crates.io/crates/ttyper)
+[![NPM](https://img.shields.io/npm/v/ttyper)](https://www.npmjs.com/package/ttyper)
 [![GitHub Stars](https://img.shields.io/github/stars/max-niederman/ttyper)](https://github.com/max-niederman/ttyper)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/max-niederman/ttyper/rust.yml)](https://github.com/max-niederman/ttyper/actions)
 [![GitHub issues](https://img.shields.io/github/issues/max-niederman/ttyper)](https://github.com/max-niederman/ttype/github/actions/workflow/status/:user/:repo/:workflow+r/issues)
