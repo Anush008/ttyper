@@ -107,10 +107,6 @@ jobs:
         run: npm version ${{ github.ref_name }}
         working-directory: ./npm
 
-      - name: Setup | Dependencies
-        run: npm ci
-        working-directory: ./npm
-
       - name: NPM Publish
         run: npm publish
         env:
