@@ -39,7 +39,7 @@ npm i -g ttyper
 For usage instructions, you can run `ttyper --help`:
 
 ```
-ttyper 1.3.0
+ttyper 1.4.0
 Terminal-based typing test.
 
 USAGE:
